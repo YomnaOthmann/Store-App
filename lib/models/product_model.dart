@@ -39,10 +39,10 @@ class RatingModel {
     required this.rate,
   });
 
-  factory RatingModel.fromJson(JsonData) {
+  factory RatingModel.fromJson(jsonData) {
     return RatingModel(
-      count: JsonData['count'],
-      rate: JsonData['rate'],
+      count: jsonData['count'],
+      rate: jsonData['rate'],
     );
   }
 }
