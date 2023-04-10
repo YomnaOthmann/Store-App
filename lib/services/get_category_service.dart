@@ -11,11 +11,15 @@ class CategoriesService {
         'https://fakestoreapi.com/products/category/$categoryName',
       ),
     );
-    List<dynamic> data = jsonDecode(response.body);
-    List<ProductModel> products = [];
-    for (int i = 0; i < data.length; i++) {
-      products.add(ProductModel.fromJson(data[i]));
+    if (response.statusCode == 200) {
+      List<dynamic> data = jsonDecode(response.body);
+      List<ProductModel> products = [];
+      for (int i = 0; i < data.length; i++) {
+        products.add(ProductModel.fromJson(data[i]));
+      }
+      return products;
+    } else {
+      throw Exception('Error with Status Code ${response.statusCode}');
     }
-    return products;
   }
 }

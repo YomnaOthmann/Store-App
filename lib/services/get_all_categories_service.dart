@@ -9,7 +9,11 @@ class AllcategoriesService {
         'https://fakestoreapi.com/products/categories',
       ),
     );
-    List<dynamic> data = jsonDecode(response.body);
-    return data;
+    if (response.statusCode == 200) {
+      List<dynamic> data = jsonDecode(response.body);
+      return data;
+    } else {
+      throw Exception("Error with Status Code ${response.statusCode}");
+    }
   }
 }
