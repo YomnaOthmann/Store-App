@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 class Api {
@@ -12,5 +13,23 @@ class Api {
     }
   }
 
-  void post() {}
+  Future<dynamic> post({
+    required String url,
+    @required dynamic body,
+    @required String? token,
+  }) async {
+    Map<String, String> header = {
+      'Accept': 'application/json',
+      'Content-Type': 'application/x-www-form-urlencoded',
+    };
+
+    if (token != null) {
+      header.addAll({'Authorization': "Bearer $token"});
+    }
+    http.Response response = await http.post(
+      Uri.parse(url),
+      body: body,
+      headers: header,
+    );
+  }
 }
