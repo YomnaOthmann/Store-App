@@ -1,4 +1,3 @@
-import 'package:http/http.dart' as http;
 import 'package:store_app/helper/api.dart';
 
 import '../models/product_model.dart';
@@ -11,7 +10,7 @@ class AddProductService {
     required String desc,
     required String category,
   }) async {
-    await Api().post(
+    Map<String, dynamic> data = await Api().post(
       url: 'https://fakestoreapi.com/products',
       body: {
         'title': title,
@@ -21,5 +20,7 @@ class AddProductService {
         'category': category,
       },
     );
+
+    return ProductModel.fromJson(data);
   }
 }
