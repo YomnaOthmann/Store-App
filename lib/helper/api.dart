@@ -3,13 +3,14 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class Api {
-  Future<List<dynamic>> get({required String url}) async {
+  Future<dynamic> get({required String url}) async {
     http.Response response = await http.get(Uri.parse(url));
     if (response.statusCode == 200) {
-      List<dynamic> data = jsonDecode(response.body);
-      return data;
+      return jsonDecode(response.body);
     } else {
       throw Exception(" Error with Status Code ${response.statusCode}");
     }
   }
+
+  void post() {}
 }
