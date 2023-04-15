@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:store_app/models/product_model.dart';
 import 'package:store_app/view/screens/home_screen.dart';
+import 'package:store_app/view/widgets/product_card.dart';
 
 import 'constants/routes.dart';
 
