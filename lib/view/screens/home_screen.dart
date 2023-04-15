@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:store_app/view/widgets/product_card.dart';
+
+import '../../models/product_model.dart';
+import '../../services/get_all_product_service.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -14,67 +18,44 @@ class HomeScreen extends StatelessWidget {
         ),
         actions: [
           IconButton(
-              onPressed: () {},
-              icon: const Icon(
-                FontAwesomeIcons.cartPlus,
-                size: 25,
-              )),
+            onPressed: () {},
+            icon: const Icon(
+              FontAwesomeIcons.cartPlus,
+              size: 25,
+            ),
+          ),
         ],
       ),
       body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: SizedBox(
-          height: 130,
-          width: 220,
-          child: Stack(children: [
-            Card(
-              elevation: 10,
-              shadowColor: Colors.grey[200],
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8)),
-              color: Colors.white,
-              child: Padding(
-                padding: const EdgeInsetsDirectional.only(
-                    start: 16.0, top: 30.0, end: 16.0, bottom: 8.0),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Text(
-                      "Handbag LV",
-                      style: TextStyle(
-                        color: Colors.grey,
-                        fontSize: 18,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        const Text(
-                          r"$245",
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 24,
-                          ),
-                        ),
-                        const SizedBox(
-                          width: 60,
-                        ),
-                        IconButton(
-                          onPressed: () {},
-                          icon: const Icon(
-                            FontAwesomeIcons.heart,
-                            color: Colors.red,
-                          ),
-                        ),
-                      ],
-                    )
-                  ],
+        padding: const EdgeInsetsDirectional.only(
+          start: 16.0,
+          end: 16.0,
+          top: 100,
+        ),
+        child: FutureBuilder<List<ProductModel>>(
+          future: AllProductsService().getAllProducts(),
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              List<ProductModel> products = [];
+              return GridView.builder(
+                clipBehavior: Clip.none,
+                shrinkWrap: true,
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  crossAxisSpacing: 10,
+                  mainAxisSpacing: 90,
                 ),
-              ),
-            ),
-          ]),
+                itemBuilder: (context, index) {
+                  ProductCard(model: products[index]);
+                },
+                itemCount: products.length,
+              );
+            } else {
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+            }
+          },
         ),
       ),
     );
