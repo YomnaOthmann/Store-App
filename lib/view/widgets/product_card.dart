@@ -20,7 +20,8 @@ class _ProductCardState extends State<ProductCard> {
     return Scaffold(
       body: GestureDetector(
         onTap: () {
-          Navigator.pushNamed(context, Routes.updateProduct);
+          Navigator.pushNamed(context, Routes.updateProduct,
+              arguments: widget.model);
         },
         child: Stack(
           clipBehavior: Clip.none,
@@ -43,7 +44,7 @@ class _ProductCardState extends State<ProductCard> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        widget.model.title.substring(0, 10),
+                        widget.model.title,
                         style: TextStyle(
                           color: Colors.grey[600],
                           fontSize: 14,
