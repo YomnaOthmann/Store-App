@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:store_app/view/screens/home_screen.dart';
+import 'package:store_app/view/screens/update_product_screen.dart';
 
 import 'constants/routes.dart';
 
@@ -15,6 +16,7 @@ class StoreApp extends StatelessWidget {
     return MaterialApp(
       routes: {
         Routes.home: (context) => const HomeScreen(),
+        Routes.updateProduct: (context) => const UpdateProductScreen(),
       },
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
