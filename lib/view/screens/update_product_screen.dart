@@ -3,48 +3,70 @@ import 'package:store_app/view/widgets/custom_button.dart';
 import 'package:store_app/view/widgets/custom_text_field.dart';
 
 class UpdateProductScreen extends StatelessWidget {
-  const UpdateProductScreen({super.key});
-
+  UpdateProductScreen({
+    super.key,
+    this.productName,
+    this.image,
+    this.description,
+    this.price,
+  });
+  String? productName, image, description;
+  int? price;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("update product"),
+        title: const Text("Update Product"),
         backgroundColor: Colors.transparent,
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: Column(
-          children: [
-            const CustomTextField(
-              label: "Product Name",
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            const CustomTextField(
-              label: "Product Description",
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            const CustomTextField(
-              label: "Product Price",
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            const CustomTextField(
-              label: "Product Image",
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            CustomButton(
-              textTitle: "Update",
-              pressed: () {},
-            ),
-          ],
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              CustomTextField(
+                label: "Product Name",
+                onChanged: (value) {
+                  productName = value;
+                },
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              CustomTextField(
+                label: "Product Description",
+                onChanged: (value) {
+                  description = value;
+                },
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              CustomTextField(
+                label: "Product Price",
+                onChanged: (value) {
+                  price = int.parse(value);
+                },
+                type: TextInputType.number,
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              CustomTextField(
+                label: "Product Image",
+                onChanged: (value) {
+                  image = value;
+                },
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              CustomButton(
+                textTitle: "Update",
+                pressed: () {},
+              ),
+            ],
+          ),
         ),
       ),
     );

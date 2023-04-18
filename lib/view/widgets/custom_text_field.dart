@@ -6,6 +6,7 @@ class CustomTextField extends StatelessWidget {
       required this.label,
       this.validate,
       this.type,
+      this.onChanged,
       this.isPass,
       this.controller});
   final String label;
@@ -13,6 +14,7 @@ class CustomTextField extends StatelessWidget {
   final TextEditingController? controller;
   final TextInputType? type;
   final bool? isPass;
+  final Function(String)? onChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -21,6 +23,7 @@ class CustomTextField extends StatelessWidget {
       keyboardType: type,
       controller: controller,
       validator: validate,
+      onChanged: onChanged,
       decoration: InputDecoration(
         labelText: label,
         labelStyle: const TextStyle(
