@@ -11,7 +11,7 @@ class UpdateProductScreen extends StatelessWidget {
     this.price,
   });
   String? productName, image, description;
-  int? price;
+  double? price;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,6 +24,9 @@ class UpdateProductScreen extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             children: [
+              const SizedBox(
+                height: 50,
+              ),
               CustomTextField(
                 label: "Product Name",
                 onChanged: (value) {
@@ -45,7 +48,7 @@ class UpdateProductScreen extends StatelessWidget {
               CustomTextField(
                 label: "Product Price",
                 onChanged: (value) {
-                  price = int.parse(value);
+                  price = double.parse(value);
                 },
                 type: TextInputType.number,
               ),
@@ -59,7 +62,7 @@ class UpdateProductScreen extends StatelessWidget {
                 },
               ),
               const SizedBox(
-                height: 10,
+                height: 50,
               ),
               CustomButton(
                 textTitle: "Update",

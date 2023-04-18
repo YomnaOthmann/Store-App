@@ -29,10 +29,12 @@ class CustomTextField extends StatelessWidget {
         labelStyle: const TextStyle(
           color: Colors.grey,
         ),
-        border: const OutlineInputBorder(
+        border: OutlineInputBorder(
           borderSide: BorderSide(
+            color: Colors.grey[700]!,
             width: 1,
           ),
+          borderRadius: BorderRadius.circular(16),
         ),
         enabledBorder: OutlineInputBorder(
           borderSide: BorderSide(
@@ -41,6 +43,9 @@ class CustomTextField extends StatelessWidget {
           ),
           borderRadius: BorderRadius.circular(16),
         ),
+        focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: Colors.deepOrange[300]!),
+            borderRadius: BorderRadius.circular(16)),
       ),
     );
   }

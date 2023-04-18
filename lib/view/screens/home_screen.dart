@@ -45,8 +45,7 @@ class HomeScreen extends StatelessWidget {
                             crossAxisCount: 2, childAspectRatio: 0.9),
                     itemCount: products.length,
                     itemBuilder: (context, index) {
-                      return Expanded(
-                          child: ProductCard(model: products[index]));
+                      return ProductCard(model: products[index]);
                     },
                   );
                 } else {
