@@ -37,7 +37,7 @@ class _ProductCardState extends State<ProductCard> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      widget.model.title,
+                      widget.model.title.substring(0, 10),
                       style: TextStyle(
                         color: Colors.grey[600],
                         fontSize: 14,

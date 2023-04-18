@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:store_app/models/product_model.dart';
 import 'package:store_app/view/screens/home_screen.dart';
-import 'package:store_app/view/widgets/product_card.dart';
 
 import 'constants/routes.dart';
 
@@ -20,12 +18,13 @@ class StoreApp extends StatelessWidget {
       },
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-          appBarTheme: const AppBarTheme(
-        backgroundColor: Colors.white,
-        elevation: 0.0,
-        foregroundColor: Colors.black,
-        centerTitle: true,
-      )),
+        appBarTheme: const AppBarTheme(
+          backgroundColor: Colors.white,
+          elevation: 0.0,
+          foregroundColor: Colors.black,
+          centerTitle: true,
+        ),
+      ),
       initialRoute: Routes.home,
     );
   }
